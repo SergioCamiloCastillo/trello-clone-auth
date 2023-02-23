@@ -15,4 +15,19 @@ export class AuthService {
       password,
     });
   }
+
+  register(name: string, password: string, email: string) {
+    console.log('llega aqui', email, name, password);
+    return this.http.post(`${this.apiUrl}/api/v1/auth/register`, {
+      email,
+      name,
+      password,
+    });
+  }
+  isAvailable(email: string) {
+    console.log("el correo es=>", email);
+    return this.http.post<{isAvailable: boolean}>(`${this.apiUrl}/api/v1/auth/is-available`, {
+      email,
+    });
+  }
 }
